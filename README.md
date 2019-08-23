@@ -22,7 +22,7 @@ This style helps to show or hide objects with smooth fades.
 		<layer name="layer_name" style="invisible_content|other_styles" keep="true"
 		  ...
 		/>
-			<layer name="layer_name" style="invisible_content|visible|other_styles" keep="true"
+		<layer name="layer_name" style="invisible_content|visible|other_styles" keep="true"
 		  ...
 		/>
 
