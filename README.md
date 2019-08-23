@@ -1,4 +1,6 @@
+
 # KRPano Developer Library
+Version 2.5
 This is a tiny library with powerful daily tools for developer. It helps to save time and produce simpler, more legible code.
 Place it in your project folder and include in usual way.
 ## Overview
@@ -14,23 +16,23 @@ This style helps to show or hide objects with smooth fades.
 #### Usage
 * Styles `invisible_content` and `visible` should be applied first in list of object styles.
 
-		<layer name="layer_name" style="invisible_content|other_styles" keep="true"
-		...
-		/>
-		<layer name="layer_name" style="invisible_content|visible|other_styles" keep="true"
-		...
-	/>
+    <layer name="layer_name" style="invisible_content|other_styles" keep="true"
+    ...
+    />
+    <layer name="layer_name" style="invisible_content|visible|other_styles" keep="true"
+    ...
+  />
 
 * `invisible_content` makes object invisible (`visible="false" alpha="0"`) by default;
 * adding `visible` overrides visibility options to `visible="true" alpha="1"` 
 * Primary methods: **`show`**, **`hide`**, **`show_fast`**, **`hide_fast`**:
 
-		callwith(layer[layer_name], show);
-		callwith(layer[layer_name], show_fast);
-		callwith(layer[layer_name], hide);
-		callwith(layer[layer_name], hide_fast);
-	The difference between ordinary and fast calls is: fast ones work immediately, ordinary use tweens to fade in or out.
-	 Hide method sets `visible="false"` after `alpha` is tweened to 0.
+    callwith(layer[layer_name], show);
+    callwith(layer[layer_name], show_fast);
+    callwith(layer[layer_name], hide);
+    callwith(layer[layer_name], hide_fast);
+  The difference between ordinary and fast calls is: fast ones work immediately, ordinary use tweens to fade in or out.
+   Hide method sets `visible="false"` after `alpha` is tweened to 0.
 * Developer can manage show and hide processes by setting these variables:
 1. **`tween_duration`** – sets duration of fade in and fade out;
 2. **`target_alpha`** – sets **`alpha`** value when object is fully visible (NOTE that **`visible`** style sets **`alpha`** to 1);
@@ -38,9 +40,9 @@ This style helps to show or hide objects with smooth fades.
 4. **`show_delay`**, **`hide_delay`** – delays before showing or hiding;
 5. **`allow_showing`** and **`allow_hiding`** – boolean variables that can be changed to prevent showing or hiding when respective methods are called;
 * Getting this flag value:
-1.	**`tween_in_progress`** – variable that states if object's **`alpha`** is being tweened at the moment;
+1.  **`tween_in_progress`** – variable that states if object's **`alpha`** is being tweened at the moment;
 * Defining custom code in these functions:
-1.	**`show_precall`**, **`show_fast_precall`**, **`hide_precall`**, **`hide_fast_precall`** – theese are called in the beginning of **`show`**(**`hide`**) and **`show_fast`**(**`hide_fast`**) calls respectively. They are always executed despite allow flags are set to **`false`** and ignore delays;
+1.  **`show_precall`**, **`show_fast_precall`**, **`hide_precall`**, **`hide_fast_precall`** – theese are called in the beginning of **`show`**(**`hide`**) and **`show_fast`**(**`hide_fast`**) calls respectively. They are always executed despite allow flags are set to **`false`** and ignore delays;
 1. **`show_before`**, **`hide_before`** – these are called if allow flags are set to **`true`** and after delay but before actual changing of alpha has started;
 2. **`show_after`**, **`hide_after`** – are called when  **`alpha`** tween completes and **`visible`** is set to **`false`**
 3. **`stop_tween`** – stops currently working tween call;
@@ -55,7 +57,7 @@ See [krpano documentation on expressions](https://krpano.com/docu/actions/#expre
 ### III. Async call
 #### Usage
     asynccall(expression,
-    	actions;
+      actions;
     );
 
 Actions will be executed as soon as expression resolves to **`false`**
@@ -82,46 +84,46 @@ This is a powerful tool to create new hotspots and layers in an 'object-oriented
 
 1. **`newhotspot`** and **`newlayer`** create new object with defined style set  and copy a link to it to **`this`** alias;
 2. Define contructor method in your style. It should have the same name as a style itself:
-	
-		<style name="style_1"
-			...
-			style_1="
-				newhotspot(%1, %2);
-				...
-				// typical calls to initialise parameters
-				// %2 and %3 will be parameter_1 and parameter_2 values from new call respectievly
-				set(this.variable1, %2);
-				set(this.variable2, %3);
-				callwith(this, your_code);
-				...
-			"
-		/>
-3. Inheritance works this way: if multiple styles are passed in first argument the **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
+  
+    <style name="style_1"
+          ...
+          style_1="
+            newhotspot(%1, %2);
+            ...
+            // typical calls to initialise parameters
+            // %2 and %3 will be parameter_1 and parameter_2 values from new call respectievly
+            set(this.variable1, %2);
+            set(this.variable2, %3);
+            callwith(this, your_code);
+            ...
+          "
+    />
+3. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
 
-NOTE: if **new** calls are done in cycles or nested constructions you need to keep an eye on what is stored in **`this`** alias in each given moment of time.
+NOTE: if **`new`** calls are done in cycles or nested constructions you need to keep an eye on what is stored in **`this`** alias in each given moment of time.
 
 An example with real code:
 
-	new(invisible_content|visible|dot_spot, calc('dot_spot_' + dot_count), get(mouse_ath1), get(mouse_atv1), get(active_plane_spot.linked_plane) );
-	
-	<style name="dot_spot"
-		url="../img/dot_spot.png"
-		...
-		...
-		linked_plane=""
-		...
-		dot_spot="
-			newhotspot(%1, %2);
+  new(invisible_content|visible|dot_spot, calc('dot_spot_' + dot_count), get(mouse_ath1), get(mouse_atv1), get(active_plane_spot.linked_plane) );
+  
+  <style name="dot_spot"
+    url="../img/dot_spot.png"
+    ...
+    ...
+    linked_plane=""
+    ...
+    dot_spot="
+      newhotspot(%1, %2);
 
-			set(this.ath, %3);
-			set(this.atv, %4);
+      set(this.ath, %3);
+      set(this.atv, %4);
 
-			set(this.linked_plane, %5);
-			callwith(this, detect_coordinates);
+      set(this.linked_plane, %5);
+      callwith(this, detect_coordinates);
 
-			inc(dot_count);
-		"
-		detect_coordinates="
-			...
-		"
-	/>
+      inc(dot_count);
+    "
+    detect_coordinates="
+      ...
+    "
+  />
