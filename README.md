@@ -134,4 +134,4 @@ An example with real code:
 Snippets and autocompletions are kept [here](https://github.com/apushkarev/Krpano-Markup-Language)
 
 Check those ones:
-* ic, sic, sicv, lsi, lsiv, lsikt, lsivkt, hsi, hsiv, hsikt, hsivkt, cwh, cwl, asynccall, nh, nl, new
+* ic, sic, sicv, lsi, lsiv, lsikt, lsivkt, hsi, hsiv, hsikt, hsivkt, cwh, cwl, cwt, asynccall, nh, nl, new
