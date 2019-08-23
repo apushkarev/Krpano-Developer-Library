@@ -98,11 +98,6 @@
     visible="true" alpha="1"
   />  
 
-  <layer name="layer_name" style="invisible_content" keep="true"
-    ...
-  />
-
-
   <action name="new" type="javascript"><![CDATA[
 
     const [f, className, name, ...params] = args;
