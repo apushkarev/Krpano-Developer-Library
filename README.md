@@ -48,6 +48,9 @@ This style helps to show or hide objects with smooth fades.
 1. **`show_before`**, **`hide_before`** – these are called if allow flags are set to **`true`** and after delay but before actual changing of alpha has started;
 2. **`show_after`**, **`hide_after`** – are called when  **`alpha`** tween completes and **`visible`** is set to **`false`**
 3. **`stop_tween`** – stops currently working tween call;
+
+NOTE: All parameters are already tuned to deliver nice experience. I change values almost never.
+
 ### II. Console
 #### Usage
 * **`console.log(expression);`** – calcs expression value and shows it in console;
