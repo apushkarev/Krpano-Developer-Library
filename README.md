@@ -59,9 +59,9 @@ This style helps to show or hide objects with smooth fades.
 See [krpano documentation on expressions](https://krpano.com/docu/actions/#expressions)
 ### III. Async call
 #### Usage
-		asynccall(expression,
-			actions;
-		);
+	asynccall(expression,
+	  actions;
+	);
 
 Actions will be executed as soon as expression resolves to **`false`**
 (NOTE: **`callwhen`** does the same but when expression resolves to **`true`**)
@@ -123,7 +123,7 @@ An example with real code:
 
 	    set(this.linked_plane, %5);
 	    callwith(this, detect_coordinates);
-	    
+
 	    inc(dot_count);
 	  "
 	  detect_coordinates="
