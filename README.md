@@ -1,10 +1,7 @@
 
-
-
-
-
 # KRPano Developer Library
 Version 2.5
+
 This is a tiny library with powerful daily tools for developer. It helps to save time and produce simpler, more legible code.
 Place it in your project folder and include in usual way.
 ## Overview
@@ -74,7 +71,7 @@ This styles override **`onloaded`** event to it's own code
 **`width_available`**, **`height_available`** – are set to true when respective dimension is initialised;
 
 #### User-defined calls
-* **`onloaded_override`** – overrides onloaded event;
+* **`onloaded_override`** – here goes your onloaded code;
 * **`onwidth`**, **`onheight`** – are called when **`width`** or **`height`** gets relevant value.
 
 ### V. New
@@ -82,7 +79,7 @@ This is a powerful tool to create new hotspots and layers in an 'object-oriented
 
 #### Functions
 * **`newhotspot(hotspot_name, styles);`**
-* **`newlayer(hotspot_name, styles);`**
+* **`newlayer(layer_name, styles);`**
 * **`new(style_1|style_2|..., new_object_name, parameter_1, parameter_2, parameter_3, ... parameter_n);`**
 
 #### Usage
