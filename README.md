@@ -67,16 +67,16 @@ This styles override **`onloaded`** event to it's own code
 **`width_available`**, **`height_available`** – are set to true when respective dimension is initialised;
 
 #### User-defined calls
-**`onloaded_override`** – overrides onloaded event;
-**`onwidth`**, **`onheight`** – are called when **`width`** or **`height`** gets relevant value.
+* **`onloaded_override`** – overrides onloaded event;
+* **`onwidth`**, **`onheight`** – are called when **`width`** or **`height`** gets relevant value.
 
 ### V. New
 This is a powerful tool to create new hotspots and layers in an 'object-oriented' way with inheritance management
 
 #### Functions
-**`newhotspot(hotspot_name, styles);`**
-**`newlayer(hotspot_name, styles);`**
-**`new(style_1|style_2|..., new_object_name, parameter_1, parameter_2, parameter_3, ... parameter_n);`**
+* **`newhotspot(hotspot_name, styles);`**
+* **`newlayer(hotspot_name, styles);`**
+* **`new(style_1|style_2|..., new_object_name, parameter_1, parameter_2, parameter_3, ... parameter_n);`**
 
 #### Usage
 
