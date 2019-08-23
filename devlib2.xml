@@ -1,0 +1,219 @@
+<krpano>
+
+  <this />
+  
+  <style name="invisible_content"
+    visible="false" alpha="0"
+
+    show_before=""
+    show_precall=""
+    show_after=""
+    show_fast_precall=""
+
+    hide_precall=""
+    hide_before=""
+    hide_after=""
+    hide_fast_precall=""
+
+    tween_duration="0.25"
+    target_alpha="1"
+    tween_type="default"
+
+    allow_showing="true"
+    allow_hiding="true"
+
+    tween_in_progress="false"
+
+    show_delay="0"
+    hide_delay="0"
+
+    show="
+      show_precall();
+
+      if (allow_showing,
+        stop_tween();
+        if (!visible,
+          delayedcall(get(name), get(show_delay),
+            set(visible, true);
+            show_before();
+            set(tween_in_progress, true);
+            tween(alpha, get(target_alpha), get(tween_duration), get(tween_type),
+              set(tween_in_progress, false);
+              show_after();
+            );
+          );
+        );
+      );
+    "
+    hide="
+      hide_precall();
+
+      if (allow_hiding,
+        stop_tween();
+        if (visible,
+          delayedcall(get(name), get(hide_delay),
+            hide_before();
+            set(tween_in_progress, true);
+            tween(alpha, 0, get(tween_duration), get(tween_type),
+              set(visible, false);
+              set(tween_in_progress, false);
+              hide_after();
+            );
+          );  
+        );
+      );
+    "
+    stop_tween="
+      stoptween(alpha);
+      set(tween_in_progress, false);
+    "
+    show_fast="
+      show_fast_precall();
+      if (allow_showing,
+        stop_tween();
+        show_before();
+        ifnot(visible,
+          set(visible, true);
+          copy(alpha, target_alpha);
+        ,
+          set(tween_in_progress, false);
+        );
+      );
+    "
+    hide_fast="
+      hide_fast_precall();
+      stop_tween();
+      if (visible AND allow_hiding,
+        hide_before();
+        set(visible, false);
+        set(alpha, 0);
+      ,
+        set(tween_in_progress, false);
+      );
+      hide_after();
+    "
+  />
+
+  <style name="visible"
+    visible="true" alpha="1"
+  />  
+
+  <layer name="layer_name" style="invisible_content" keep="true"
+    ...
+  />
+
+
+  <action name="new" type="javascript"><![CDATA[
+
+    const [f, className, name, ...params] = args;
+
+    const classArray = className.split('|');
+    let constructorClass = '';
+
+    for (let i = 0; i < classArray.length; i++) {
+      if (krpano.get(`style[${classArray[i]}].${classArray[i]}`)) {
+        constructorClass = classArray[i];
+      }
+    }
+    
+    krpano.call(`style[${constructorClass}].${constructorClass}(${name}, ${className}, ${params.join(', ')});`);
+
+  ]]></action>
+
+  <action name="newhotspot">
+  
+    addhotspot(%1);
+    copy(this, hotspot[%1]);
+    this.loadstyle(%2);
+    
+  </action>
+
+  <action name="newlayer">
+  
+    addlayer(%1);
+    copy(this, layer[%1]);
+    this.loadstyle(%2);
+    
+  </action>
+
+  <!-- 
+    %1 – flag
+    %2 – call
+  -->
+  <action name="asynccall">
+    asyncloop( %1, ,
+      %2
+    );
+  </action>
+
+
+  <style name="reliable_width"
+    width_available="false" 
+    onloaded="
+      onloaded_override();
+      asynccall(width == 0 OR width == null,
+        onwidth();
+        set(width_available, true);
+      );
+    "
+    onwidth=""
+    onloaded_override=""
+  />
+
+  <style name="reliable_height"
+    height_available="false" 
+    onloaded="
+      onloaded_override();
+      asynccall(height == 0 OR height == null,
+        onheight();
+        set(height_available, true);
+      );
+    "
+    onheight=""
+    onloaded_override=""
+  />
+
+  <console
+    line_no="0"
+    log="
+      if (%1 OR %1 == 0 OR %1 == false,
+        trace(get(console.line_no), ' | name: ', get(name), ' ::  ', calc(%1)); 
+      , %1 == NaN,
+        trace(get(console.line_no), ' | name: ', get(name), ' ::  %1 = NaN'); 
+      , %1 == null,
+        trace(get(console.line_no), ' | name: ', get(name), ' ::  %1 = null'); 
+      , %1 == '',
+        trace(get(console.line_no), ' | name: ', get(name), ' ::  empty string'); 
+      );
+
+      inc(console.line_no);
+
+      showlog();
+    "
+    divider="
+      trace('----------------------------------------------------');
+    "
+    msg="
+      trace(get(console.line_no), ' | ', %1); 
+      inc(console.line_no);
+      showlog();
+    "
+    var_name=""
+    var="
+      set(var_name, %1);
+      if ( %1 OR %1 == 0,
+        trace(get(console.line_no), ' | name: ', get(name), ' :: ', var_name, ' = ', calc(%1)); 
+
+      , %1 === null,
+        trace(get(console.line_no), ' | name: ', get(name), ' ::  ', var_name, ' = null'); 
+        
+      , %1 === NaN,
+        trace(get(console.line_no), ' | name: ', get(name), ' ::  ', var_name, ' = NaN'); 
+      );
+      inc(console.line_no);
+
+      showlog();
+    "
+  />
+
+</krpano>
