@@ -84,8 +84,8 @@ This is a powerful tool to create new hotspots and layers in an 'object-oriented
 
 #### Usage
 
-1. **`newhotspot`** and **`newlayer`** create new object with defined style set  and copy a link to it to **`this`** alias;
-2. Define contructor method in your style. It should have the same name as a style itself:   
+1. **`newhotspot`** and **`newlayer`** actions create new object with defined style set. Finally they copy a link to new object to **`this`** alias;
+2. Define contructor method in your style. It should have the same name as a style itself. Also it should call **`newhotspot`** or **`newlayer`** in first line (depending in what you want to create)
 3. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
 
 		<style name="style_1"
@@ -134,4 +134,4 @@ An example with real code:
 Snippets and autocompletions are kept [here](https://github.com/apushkarev/Krpano-Markup-Language)
 
 Check those ones:
-* ic, sic, sicv, lsi, lsiv, lsikt, lsivkt, hsi, hsiv, hsikt, hsivkt, cwh, cwl, cwt, asynccall, nh, nl, new
+* ic, sic, sicv, lsi, lsiv, lsikt, lsivkt, hsi, hsiv, hsikt, hsivkt, cwh, cwl, cwt, asynccall, nh, nl, new, cl, cm, cv, cd
