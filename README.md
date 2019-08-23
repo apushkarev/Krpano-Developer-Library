@@ -61,7 +61,7 @@ See [krpano documentation on expressions](https://krpano.com/docu/actions/#expre
 Actions will be executed as soon as expression resolves to **`false`**
 (NOTE: **`callwhen`** does the same but when expression resolves to **`true`**)
 ### IV. Reliable width and height
-This is a style that overrides **`onloaded`** event to it's own code
+This are two styles that overrides **`onloaded`** event to it's own code
 #### Status flags:
 **`width_available`**, **`height_available`** – are set to true when respective dimension is initialised;
 
