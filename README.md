@@ -44,7 +44,7 @@ This style helps to show or hide objects with smooth fades.
 * Getting this flag value:
 1.  **`tween_in_progress`** – variable that states if object's **`alpha`** is being tweened at the moment;
 * Defining custom code in these functions:
-1.  **`show_precall`**, **`show_fast_precall`**, **`hide_precall`**, **`hide_fast_precall`** – theese are called in the beginning of **`show`**(**`hide`**) and **`show_fast`**(**`hide_fast`**) calls respectively. They are always executed despite allow flags are set to **`false`** and ignore delays;
+1.  **`show_precall`**, **`show_fast_precall`**, **`hide_precall`**, **`hide_fast_precall`** – these are called in the beginning of **`show`**(**`hide`**) and **`show_fast`**(**`hide_fast`**) calls respectively. They are always executed despite allow flags are set to **`false`**. These calls also ignore delays;
 1. **`show_before`**, **`hide_before`** – these are called if allow flags are set to **`true`** and after delay but before actual changing of alpha has started;
 2. **`show_after`**, **`hide_after`** – are called when  **`alpha`** tween completes and **`visible`** is set to **`false`**
 3. **`stop_tween`** – stops currently working tween call;
