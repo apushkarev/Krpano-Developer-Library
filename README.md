@@ -81,15 +81,17 @@ This styles override **`onloaded`** event to it's own code
 This is a powerful tool to create new hotspots and layers in an 'object-oriented' way with inheritance management
 
 #### Functions
+
 * **`newhotspot(hotspot_name, styles);`**
 * **`newlayer(layer_name, styles);`**
 * **`new(style_1|style_2|..., new_object_name, parameter_1, parameter_2, parameter_3, ... parameter_n);`**
 
+**`newhotspot`** and **`newlayer`** actions create new object with defined style set. Finally they copy a link to new object to **`this`** alias;
+
 #### Usage
 
-1. **`newhotspot`** and **`newlayer`** actions create new object with defined style set. Finally they copy a link to new object to **`this`** alias;
-2. Define contructor method in your style. It should have the same name as a style itself. Also it should call **`newhotspot`** or **`newlayer`** in first line (depending in what you want to create)
-3. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
+1. Define contructor method in your style. It should have the same name as a style itself. Also it should call **`newhotspot`** or **`newlayer`** in first line (depending in what you want to create). This calls inside constructir shold be called only this way: **`newhotspot(%1, %2)`** or **`newlayer(%1, %2)`**.
+2. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
 
 		<style name="style_1"
 	      ...
