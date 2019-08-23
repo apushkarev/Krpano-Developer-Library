@@ -89,44 +89,41 @@ This is a powerful tool to create new hotspots and layers in an 'object-oriented
 2. Define contructor method in your style. It should have the same name as a style itself:   
 3. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
 
-		<style name="style_1"
-		  ...
-		  style_1="
-		    newhotspot(%1, %2);
-		    ...
-		    // typical calls to initialise parameters
-		    // %2 and %3 will be parameter_1 and parameter_2 values from new call respectievly
-		    set(this.variable1, %2);
-		    set(this.variable2, %3);
-		    callwith(this, your_code);
-		    ...
-		  "
-		/>
+	<style name="style_1"
+	  ...
+	  style_1="
+	    newhotspot(%1, %2);
+	    ...
+	    // typical calls to initialise parameters
+	    // %2 and %3 will be parameter_1 and parameter_2 values from new call respectievly
+	    set(this.variable1, %2);
+	    set(this.variable2, %3);
+	    callwith(this, your_code);
+	    ...
+	  "
+	/>
 
 NOTE: if **`new`** calls are done in cycles or nested constructions you need to keep an eye on what is stored in **`this`** alias in each given moment of time.
 
 An example with real code:
 
-		new(invisible_content|visible|dot_spot, calc('dot_spot_' + dot_count), get(mouse_ath1), get(mouse_atv1), get(active_plane_spot.linked_plane) );
-	
-		<style name="dot_spot"
-			url="../img/dot_spot.png"
-			...
-			...
-			linked_plane=""
-			...
-			dot_spot="
-				newhotspot(%1, %2);
-	
-				set(this.ath, %3);
-				set(this.atv, %4);
-	
-				set(this.linked_plane, %5);
-				callwith(this, detect_coordinates);
-	
-				inc(dot_count);
-			"
-			detect_coordinates="
-				...
-			"
-		/>
+	new(invisible_content|visible|dot_spot, calc('dot_spot_' + dot_count), get(mouse_ath1), get(mouse_atv1), get(active_plane_spot.linked_plane) );
+
+	<style name="dot_spot"
+	  url="../img/dot_spot.png"
+	  ...
+	  ...
+	  linked_plane=""
+	  ...
+	  dot_spot="
+	    newhotspot(%1, %2);
+	    set(this.ath, %3);
+	    set(this.atv, %4);
+	    set(this.linked_plane, %5);
+	    callwith(this, detect_coordinates);
+	    inc(dot_count);
+	  "
+	  detect_coordinates="
+	    ...
+	  "
+	/>
