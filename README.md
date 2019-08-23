@@ -1,6 +1,6 @@
 # KRPano Developer Library
 This is a tiny library with powerful daily tools for developer. It helps to save time and produce simpler, more legible code.
-Place it in your code folder and include in usual way.
+Place it in your project folder and include in usual way.
 ## Overview
 - **`invisible_content`** style for smart visibility management of any displayed object;
 - **`console`** calls for easy debug output;
@@ -32,18 +32,18 @@ This style helps to show or hide objects with smooth fades.
 	The difference between ordinary and fast calls is: fast ones work immediately, ordinary use tweens to fade in or out.
 	 Hide method sets `visible="false"` after `alpha` is tweened to 0.
 * Developer can manage show and hide processes by setting these variables:
-	**`tween_duration`** – sets duration of fade in and fade out;
-	**`target_alpha`** – sets **`alpha`** value when object is fully visible (NOTE that **`visible`** style sets **`alpha`** to 1);
-	**`tween_type`** – sets tween type (**`default`** by default);
-	**`show_delay`**, **`hide_delay`** – delays before showing or hiding;
-	**`allow_showing`** and **`allow_hiding`** – boolean variables that can be changed to prevent showing or hiding when respective methods are called;
+-	**`tween_duration`** – sets duration of fade in and fade out;
+-	**`target_alpha`** – sets **`alpha`** value when object is fully visible (NOTE that **`visible`** style sets **`alpha`** to 1);
+-	**`tween_type`** – sets tween type (**`default`** by default);
+-	**`show_delay`**, **`hide_delay`** – delays before showing or hiding;
+-	**`allow_showing`** and **`allow_hiding`** – boolean variables that can be changed to prevent showing or hiding when respective methods are called;
 * Getting this flag value:
-	**`tween_in_progress`** – variable that states if object's **`alpha`** is being tweened at the moment;
+-	**`tween_in_progress`** – variable that states if object's **`alpha`** is being tweened at the moment;
 * Defining custom code in these functions:
-	**`show_precall`**, **`show_fast_precall`**, **`hide_precall`**, **`hide_fast_precall`** – theese are called in the beginning of **`show`**(**`hide`**) and **`show_fast`**(**`hide_fast`**) calls respectively. They are always executed despite allow flags are set to **`false`** and ignore delays;
-	**`show_before`**, **`hide_before`** – these are called if allow flags are set to **`true`** and after delay but before actual changing of alpha has started;
-	**`show_after`**, **`hide_after`** – are called when  **`alpha`** tween completes and **`visible`** is set to **`false`**
-	**`stop_tween`** – stops currently working tween call;
+-	**`show_precall`**, **`show_fast_precall`**, **`hide_precall`**, **`hide_fast_precall`** – theese are called in the beginning of **`show`**(**`hide`**) and **`show_fast`**(**`hide_fast`**) calls respectively. They are always executed despite allow flags are set to **`false`** and ignore delays;
+-	**`show_before`**, **`hide_before`** – these are called if allow flags are set to **`true`** and after delay but before actual changing of alpha has started;
+-	**`show_after`**, **`hide_after`** – are called when  **`alpha`** tween completes and **`visible`** is set to **`false`**
+-	**`stop_tween`** – stops currently working tween call;
 ### II. Console
 #### Usage
 * **`console.log(expression);`** – calcs expression value and shows it in console;
