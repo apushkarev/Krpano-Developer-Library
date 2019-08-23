@@ -9,7 +9,7 @@ Place it in your project folder and include in usual way.
 - **`invisible_content`** style for smart visibility management of any displayed object;
 - **`console`** calls for easy debug output;
 - **`asynccall`** shortcut (nice addition to **`callwhen`**);
-- **`reliable_width`** and **`reliable_height`** styles to obtain and handle textfield dimensions when they are ready;
+- **`reliable_width`** and **`reliable_height`** styles to get and handle textfield dimensions when they are ready. The arbitary(unset) textfield dimensions are not available at the moment when textfield is created, so we need to wait until sizes are defined by krpano engine; 
 - **`new`**, **`newhotspot`** and **`newlayer`** – calls to support object-oriented style of code. They make code A LOT shorter and manage inheritance in a distinct way;
 - **`this`** – just a tag to make aliases.
 ## More details
