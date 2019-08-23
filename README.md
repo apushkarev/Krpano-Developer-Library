@@ -117,10 +117,13 @@ An example with real code:
 	  ...
 	  dot_spot="
 	    newhotspot(%1, %2);
+
 	    set(this.ath, %3);
 	    set(this.atv, %4);
+
 	    set(this.linked_plane, %5);
 	    callwith(this, detect_coordinates);
+	    
 	    inc(dot_count);
 	  "
 	  detect_coordinates="
