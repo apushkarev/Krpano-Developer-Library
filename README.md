@@ -1,5 +1,6 @@
 
 
+
 # KRPano Developer Library
 Version 2.5
 This is a tiny library with powerful daily tools for developer. It helps to save time and produce simpler, more legible code.
@@ -100,6 +101,7 @@ This is a powerful tool to create new hotspots and layers in an 'object-oriented
             ...
           "
         />
+    
 3. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
 
 NOTE: if **`new`** calls are done in cycles or nested constructions you need to keep an eye on what is stored in **`this`** alias in each given moment of time.
