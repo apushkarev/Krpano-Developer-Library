@@ -90,7 +90,7 @@ This is a powerful tool to create new hotspots and layers in an 'object-oriented
 
 #### Usage
 
-1. Define contructor method in your style. It should have the same name as a style itself. Also it should call **`newhotspot`** or **`newlayer`** in first line (depending in what you want to create). This calls inside constructir shold be called only this way: **`newhotspot(%1, %2)`** or **`newlayer(%1, %2)`**.
+1. Define contructor method in your style. It should have the same name as a style itself. Also it should call **`newhotspot`** or **`newlayer`** in first line (depending in what you want to create). This calls inside constructor shold be called only this way: **`newhotspot(%1, %2)`** or **`newlayer(%1, %2)`**.
 2. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
 
 		<style name="style_1"
