@@ -129,3 +129,9 @@ An example with real code:
 	    ...
 	  "
 	/>
+
+### Helpful snippets
+Snippets and autocompletions are kept [here](https://github.com/apushkarev/Krpano-Markup-Language)
+
+Check those ones:
+* ic, sic, sicv, lsi, lsiv, lsikt, lsivkt, hsi, hsiv, hsikt, hsivkt, cwh, cwl, asynccall, nh, nl, new
