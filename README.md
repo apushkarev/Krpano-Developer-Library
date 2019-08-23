@@ -2,6 +2,7 @@
 
 
 
+
 # KRPano Developer Library
 Version 2.5
 This is a tiny library with powerful daily tools for developer. It helps to save time and produce simpler, more legible code.
@@ -90,19 +91,19 @@ This is a powerful tool to create new hotspots and layers in an 'object-oriented
 2. Define contructor method in your style. It should have the same name as a style itself:   
 3. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
 
-	<style name="style_1"
-	  ...
-	  style_1="
-	    newhotspot(%1, %2);
-	    ...
-	    // typical calls to initialise parameters
-	    // %2 and %3 will be parameter_1 and parameter_2 values from new call respectievly
-	    set(this.variable1, %2);
-	    set(this.variable2, %3);
-	    callwith(this, your_code);
-	    ...
-	  "
-	/>
+		<style name="style_1"
+	      ...
+	      style_1="
+	        newhotspot(%1, %2);
+	        ...
+	        // typical calls to initialise parameters
+	        // %2 and %3 will be parameter_1 and parameter_2 values from new call respectievly
+	        set(this.variable1, %2);
+	        set(this.variable2, %3);
+	        callwith(this, your_code);
+	        ...
+	      "
+	    />
 
 NOTE: if **`new`** calls are done in cycles or nested constructions you need to keep an eye on what is stored in **`this`** alias in each given moment of time.
 
