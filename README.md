@@ -1,6 +1,7 @@
 
 
 
+
 # KRPano Developer Library
 Version 2.5
 This is a tiny library with powerful daily tools for developer. It helps to save time and produce simpler, more legible code.
@@ -19,20 +20,20 @@ This style helps to show or hide objects with smooth fades.
 * Styles `invisible_content` and `visible` should be applied first in list of object styles.
 
 		<layer name="layer_name" style="invisible_content|other_styles" keep="true"
-		...
+		  ...
 		/>
-		<layer name="layer_name" style="invisible_content|visible|other_styles" keep="true"
-		...
-	/>
+			<layer name="layer_name" style="invisible_content|visible|other_styles" keep="true"
+		  ...
+		/>
 
 * `invisible_content` makes object invisible (`visible="false" alpha="0"`) by default;
 * adding `visible` overrides visibility options to `visible="true" alpha="1"` 
 * Primary methods: **`show`**, **`hide`**, **`show_fast`**, **`hide_fast`**:
 
-			callwith(layer[layer_name], show);
-			callwith(layer[layer_name], show_fast);
-			callwith(layer[layer_name], hide);
-			callwith(layer[layer_name], hide_fast);
+		callwith(layer[layer_name], show);
+		callwith(layer[layer_name], show_fast);
+		callwith(layer[layer_name], hide);
+		callwith(layer[layer_name], hide_fast);
 
 	The difference between ordinary and fast calls is: fast ones work immediately, ordinary use tweens to fade in or out.
 	 Hide method sets `visible="false"` after `alpha` is tweened to 0.
