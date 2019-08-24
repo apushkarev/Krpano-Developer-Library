@@ -1,4 +1,5 @@
 
+
 # KRPano Developer Library
 Version 2.5
 
@@ -64,11 +65,22 @@ See [krpano documentation on expressions](https://krpano.com/docu/actions/#expre
 	asynccall(expression,
 	  actions;
 	);
-
 Actions will be executed as soon as expression resolves to **`false`**
 (NOTE: **`callwhen`** does the same but when expression resolves to **`true`**)
 ### IV. Reliable width and height
 Add styles `reliable_width` or `reliable_height` in the end of style list for your object.
+
+    <layer name="layer_name" style="invisible_content|some_text|reliable_height" keep="true"
+    	type="textfield"
+    	width="300"
+    	align="lefttop"
+    
+    	onheight="
+    	    calc(y, height + ...);
+    	    show();
+    	"
+    />
+
 This styles override **`onloaded`** event to it's own code
 #### Status flags:
 **`width_available`**, **`height_available`** – are set to true when respective dimension is initialised;
@@ -90,8 +102,8 @@ This is a powerful tool to create new hotspots and layers in an 'object-oriented
 
 #### Usage
 
-1. Define contructor method in your style. It should have the same name as a style itself. Also it should call **`newhotspot`** or **`newlayer`** in first line (depending in what you want to create). This calls inside constructor shold be called only this way: **`newhotspot(%1, %2)`** or **`newlayer(%1, %2)`**.
-2. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it it with all passed arguments.
+1. Define contructor method in your style. It should have the same name as a style itself. Constructor should call **`newhotspot`** or **`newlayer`** actions in first line (depending on what object you want to create). This actions inside constructor have one correct form to call: **`newhotspot(%1, %2);`** or **`newlayer(%1, %2);`**.
+2. Inheritance works this way: if multiple styles are passed in first argument of a **`new`** call it will search for last style with defined constructor and call it with all passed arguments.
 
 		<style name="style_1"
 	      ...
@@ -111,7 +123,12 @@ NOTE: if **`new`** calls are done in cycles or nested constructions you need to 
 
 An example with real code:
 
-	new(invisible_content|visible|dot_spot, calc('dot_spot_' + dot_count), get(mouse_ath1), get(mouse_atv1), get(active_plane_spot.linked_plane) );
+	new(invisible_content|visible|dot_spot,
+        calc('dot_spot_' + dot_count),
+        get(mouse_ath1),
+        get(mouse_atv1),
+        get(active_plane_spot.linked_plane)
+	);
 
 	<style name="dot_spot"
 	  url="../img/dot_spot.png"
@@ -138,5 +155,5 @@ An example with real code:
 ### Helpful snippets
 Snippets and autocompletions are kept [here](https://github.com/apushkarev/Krpano-Markup-Language)
 
-Check those ones:
+Check this ones:
 * ic, sic, sicv, lsi, lsiv, lsikt, lsivkt, hsi, hsiv, hsikt, hsivkt, cwh, cwl, cwt, asynccall, nh, nl, new, cl, cm, cv, cd
