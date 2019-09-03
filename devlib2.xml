@@ -117,16 +117,14 @@
 
   <action name="newhotspot">
   
-    addhotspot(%1);
-    copy(this, hotspot[%1]);
+    addhotspot(%1, this);
     this.loadstyle(%2);
     
   </action>
 
   <action name="newlayer">
   
-    addlayer(%1);
-    copy(this, layer[%1]);
+    addlayer(%1, this);
     this.loadstyle(%2);
     
   </action>
