@@ -1,7 +1,7 @@
 
 
 # KRPano Developer Library
-Version 2.5.1
+Version 2.5.2
 
 This is a tiny library with powerful daily tools for developer. It helps to save time and produce simpler, more legible code.
 Place it in your project folder and include in usual way.
