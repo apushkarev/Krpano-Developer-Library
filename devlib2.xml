@@ -106,7 +106,7 @@
     let constructorClass = '';
 
     for (let i = 0; i < classArray.length; i++) {
-      if (krpano.get(`style[${classArray[i]}].${classArray[i]}`)) {
+      if (classArray[i] != 'visible' && krpano.get(`style[${classArray[i]}].${classArray[i]}`)) {
         constructorClass = classArray[i];
       }
     }
