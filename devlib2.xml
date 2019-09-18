@@ -32,7 +32,7 @@
 
       if (allow_showing,
         stop_tween();
-        if (!visible,
+        if (!visible OR alpha != target_alpha,
           delayedcall(get(name), get(show_delay),
             set(visible, true);
             show_before();
