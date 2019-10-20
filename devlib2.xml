@@ -111,6 +111,11 @@
       }
     }
     
+
+    krpano.call(`
+      copy(parent, ${caller._type}[${caller.name}]);
+    `);
+    
     krpano.call(`style[${constructorClass}].${constructorClass}(${name}, ${className}, ${params.join(', ')});`);
 
   ]]></action>

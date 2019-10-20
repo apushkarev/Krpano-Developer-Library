@@ -146,11 +146,35 @@ An example with real code:
 	    callwith(this, detect_coordinates);
 
 	    inc(dot_count);
+	    add_dot_text();
 	  "
 	  detect_coordinates="
 	    ...
 	  "
+	  add_dot_text="
+		  calc(linked_text, name + '_t');
+		  new(dot_text,
+			  get(linked_text),
+			  ...,
+			  ...
+			);
+	  "
 	/>
+3. **`new`** call will create an alias `parent` where a link to a caller object will be stored. In a code sample above **`new`** is called from `add_dot_text` action. So the `parent` alias will store link to newly created `dot_spot` object whether it was a hotspot or a layer.
+
+An example how `parent` alias can be used:
+
+		<style name="dot_text"
+			parent_spot=""
+			
+			dot_text="
+				newhotspot(%1, %2);
+			
+				copy(this.parent_spot, parent.name);
+				copy(this.ath, parent.ath);
+				copy(this.atv, parent.atv);
+			"
+		/>
 
 ### Helpful snippets
 Snippets and autocompletions are kept [here](https://github.com/apushkarev/Krpano-Markup-Language)
