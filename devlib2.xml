@@ -22,7 +22,8 @@
     allow_showing="true"
     allow_hiding="true"
 
-    tween_in_progress="false"
+    is_showing="false"
+    is_hiding="false"
 
     show_delay="0"
     hide_delay="0"
@@ -36,9 +37,9 @@
           delayedcall(get(name), get(show_delay),
             set(visible, true);
             show_before();
-            set(tween_in_progress, true);
+            set(is_showing, true);
             tween(alpha, get(target_alpha), get(tween_duration), get(tween_type),
-              set(tween_in_progress, false);
+              set(is_showing, false);
               show_after();
             );
           );
@@ -53,10 +54,10 @@
         if (visible,
           delayedcall(get(name), get(hide_delay),
             hide_before();
-            set(tween_in_progress, true);
+            set(is_hiding, true);
             tween(alpha, 0, get(tween_duration), get(tween_type),
               set(visible, false);
-              set(tween_in_progress, false);
+              set(is_hiding, false);
               hide_after();
             );
           );  
@@ -65,7 +66,19 @@
     "
     stop_tween="
       stoptween(alpha);
-      set(tween_in_progress, false);
+      
+      if (is_showing,
+        set(is_showing, false);
+
+        set(alpha, 0);
+        set(visible, false);
+      );
+
+      if (is_hiding,
+        set(is_hiding, false);
+        copy(alpha, target_alpha);
+        set(visible, true);
+      );
     "
     show_fast="
       show_fast_precall();
