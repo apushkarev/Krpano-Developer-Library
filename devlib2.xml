@@ -111,6 +111,11 @@
       );
       hide_after();
     "
+    update_alpha="
+      if (visible AND alpha != target_alpha,
+        tween(alpha, get(target_alpha), get(tween_duration), get(tween_type));
+      );
+    "
   />
 
   <style name="visible"

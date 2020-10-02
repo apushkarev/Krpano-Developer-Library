@@ -28,12 +28,13 @@ This style helps to show or hide objects with smooth fades.
 
 * `invisible_content` makes object invisible (`visible="false" alpha="0"`) by default;
 * adding `visible` overrides visibility options to `visible="true" alpha="1"` 
-* Primary methods: **`show`**, **`hide`**, **`show_fast`**, **`hide_fast`**:
+* Primary methods: **`show`**, **`hide`**, **`show_fast`**, **`hide_fast`**, **`update_alpha`**:
 
 		callwith(layer[layer_name], show);
 		callwith(layer[layer_name], show_fast);
 		callwith(layer[layer_name], hide);
 		callwith(layer[layer_name], hide_fast);
+		callwith(layer[layer_name], update_alpha);
 
 	The difference between ordinary and fast calls is: fast ones work immediately, ordinary use tweens to fade in or out.
 	 Hide method sets `visible="false"` after `alpha` is tweened to 0.
@@ -44,12 +45,13 @@ This style helps to show or hide objects with smooth fades.
 4. **`show_delay`**, **`hide_delay`** – delays before showing or hiding;
 5. **`allow_showing`** and **`allow_hiding`** – boolean variables that can be changed to prevent showing or hiding when respective methods are called;
 * Getting this flag value:
-1.  **`tween_in_progress`** – variable that states if object's **`alpha`** is being tweened at the moment;
+6.  **`tween_in_progress`** – variable that states if object's **`alpha`** is being tweened at the moment;
 * Defining custom code in functions:
-1.  **`show_precall`**, **`show_fast_precall`**, **`hide_precall`**, **`hide_fast_precall`** – these are called in the beginning of **`show`**(**`hide`**) and **`show_fast`**(**`hide_fast`**) calls respectively. They are always executed despite allow flags are set to **`false`**. These calls also ignore delays;
-1. **`show_before`**, **`hide_before`** – these are called if allow flags are set to **`true`** and after delay but before actual changing of alpha has started;
-2. **`show_after`**, **`hide_after`** – are called when  **`alpha`** tween completes and **`visible`** is set to **`false`**
-3. **`stop_tween`** – stops currently working tween call;
+7.  **`show_precall`**, **`show_fast_precall`**, **`hide_precall`**, **`hide_fast_precall`** – these are called in the beginning of **`show`**(**`hide`**) and **`show_fast`**(**`hide_fast`**) calls respectively. They are always executed despite allow flags are set to **`false`**. These calls also ignore delays;
+8. **`show_before`**, **`hide_before`** – these are called if allow flags are set to **`true`** and after delay but before actual changing of alpha has started;
+9. **`show_after`**, **`hide_after`** – are called when  **`alpha`** tween completes and **`visible`** is set to **`false`**
+10. **`stop_tween`** – stops currently working tween call;
+11. **`update_alpha`** – if **`target_alpha`** value has changed this call will update alpha to new target_value. 
 
 NOTE: All parameters are already tuned to deliver nice experience. I change values almost never.
 
