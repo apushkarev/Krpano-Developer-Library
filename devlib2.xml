@@ -134,19 +134,32 @@
 
   ]]></action>
 
-  <action name="newhotspot">
-  
+ <action name="newhotspot">
+
+  ifnot (hotspot[%1],
     addhotspot(%1, this);
     this.loadstyle(%2);
-    
-  </action>
+  );
+ 
+ </action>
 
-  <action name="newlayer">
-  
+ <action name="newlayer">
+
+  ifnot (layer[%1],
     addlayer(%1, this);
     this.loadstyle(%2);
-    
-  </action>
+  );
+   
+ </action>
+
+ <action name="newplugin">
+  
+  ifnot (plugin[%1],
+    addplugin(%1, this);
+    this.loadstyle(%2);
+  );
+  
+ </action>
 
   <!-- 
     %1 – flag
