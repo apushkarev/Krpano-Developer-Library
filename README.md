@@ -12,6 +12,7 @@ Place it in your project folder and include in usual way.
 - **`reliable_width`** and **`reliable_height`** styles to asynchronously obtain and handle textfield dimensions when they are rendered. The arbitary(unset) textfield dimensions are not available at the moment when textfield is created. That's why code needs to wait until sizes are defined by krpano engine; 
 - **`new`**, **`newhotspot`** and **`newlayer`** – calls to support object-oriented style of code. They make code A LOT shorter and manage inheritance in a distinct way;
 - **`this`** – just a tag to make aliases.
+- **`get_this`** – action to copy object link to **`this`** 
 ## More details
 ### I. Invisible Content
 This style helps to show or hide objects with smooth fades.
@@ -174,6 +175,20 @@ An example how `parent` alias can be used:
 				copy(this.ath, parent.ath);
 				copy(this.atv, parent.atv);
 			"
+		/>
+
+### VI. this, get_this
+**`this`** alias is handy to save caller object when it calls another object method with `**callwith**` operator and passes it's own parameters.
+
+		<layer name="some_layer"
+		  property1="false"
+		  some_action="
+		  	...
+		  	get_this();
+		  	callwith(layer[some_layer2],
+			  another_action(get(this.property1));
+		  	);
+		  "
 		/>
 
 ### Helpful snippets

@@ -1,6 +1,12 @@
 <krpano>
 
   <this />
+
+  <action name="get_this">
+  
+    copy(this, calc(_type + '[' + name + ']'));
+
+  </action>
   
   <style name="invisible_content"
     visible="false" alpha="0"
