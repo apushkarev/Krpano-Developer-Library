@@ -1,23 +1,28 @@
 
 
 # KRPano Developer Library
-Version 2.5.4 (10-20-19)
+Version 2.6 (October 2, 2020)
 
-This is a tiny library with powerful daily tools for krpano developer. It helps save time and produce simpler more legible code.
+This is a tiny library with powerful daily tools for krpano developer. It helps save time and produce more legible code.
+
+## Installation
 Place it in your project folder and include in usual way.
+
 ## Overview
 - **`invisible_content`** style for smart visibility management of any displayed object;
 - **`console`** calls for easy debug output;
-- **`asynccall`** shortcut (nice addition to **`callwhen`**);
+- **`asynccall`** shortcut (in addition to **`callwhen`**);
 - **`reliable_width`** and **`reliable_height`** styles to asynchronously obtain and handle textfield dimensions when they are rendered. The arbitary(unset) textfield dimensions are not available at the moment when textfield is created. That's why code needs to wait until sizes are defined by krpano engine; 
-- **`new`**, **`newhotspot`** and **`newlayer`** – calls to support object-oriented style of code. They make code A LOT shorter and manage inheritance in a distinct way;
+- **`new`**, **`newhotspot`**, **`newlayer`** and **`newplugin`** – calls to support object-oriented style of code. They make code A LOT shorter and manage inheritance in a distinct way;
 - **`this`** – just a tag to make aliases.
 - **`get_this`** – action to copy object link to **`this`** 
+
 ## More details
+
 ### I. Invisible Content
-This style helps to show or hide objects with smooth fades.
+This style helps show or hide objects with smooth fades.
 #### Usage
-* Styles `invisible_content` and `visible` should be applied first in list of object styles.
+* Styles `invisible_content` and `visible` should be written first in list of object styles.
 
 		<layer name="layer_name" style="invisible_content|other_styles" keep="true"
 		  ...
@@ -27,7 +32,7 @@ This style helps to show or hide objects with smooth fades.
 		/>
 
 * `invisible_content` makes object invisible (`visible="false" alpha="0"`) by default;
-* adding `visible` overrides visibility options to `visible="true" alpha="1"` 
+* adding `visible` overrides visibility options to `visible="true"` and `alpha="target_alpha"` 
 * Primary methods: **`show`**, **`hide`**, **`show_fast`**, **`hide_fast`**, **`update_alpha`**:
 
 		callwith(layer[layer_name], show);
@@ -46,7 +51,7 @@ This style helps to show or hide objects with smooth fades.
 5. **`allow_showing`** and **`allow_hiding`** – boolean variables that can be changed to prevent showing or hiding when respective methods are called;
 * Getting this flag value:
 6.  **`tween_in_progress`** – variable that states if object's **`alpha`** is being tweened at the moment;
-* Defining custom code in functions:
+* Defining custom code in actions:
 7.  **`show_precall`**, **`show_fast_precall`**, **`hide_precall`**, **`hide_fast_precall`** – these are called in the beginning of **`show`**(**`hide`**) and **`show_fast`**(**`hide_fast`**) calls respectively. They are always executed despite allow flags are set to **`false`**. These calls also ignore delays;
 8. **`show_before`**, **`hide_before`** – these are called if allow flags are set to **`true`** and after delay but before actual changing of alpha has started;
 9. **`show_after`**, **`hide_after`** – are called when  **`alpha`** tween completes and **`visible`** is set to **`false`**
