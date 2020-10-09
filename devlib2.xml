@@ -260,4 +260,25 @@
     "
   />
 
+  <action name="array_push" type="javascript"><![CDATA[
+
+    const [f, arrayName, arrayItemName] = args;
+
+    krpano.set(`${arrayName}[${arrayItemName}].name`, arrayItemName);
+    
+  ]]></action>
+
+  <action name="remove_array">
+
+    if (%1,
+
+      calc(i, %1.count - 1);
+
+      for(, i GE 0, dec(i),
+        %1.removearrayitem(get(i));
+      );
+    );
+    
+  </action>
+
 </krpano>

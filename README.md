@@ -1,7 +1,7 @@
 
 
 # KRPano Developer Library
-Version 2.6.1 (October 2, 2020)
+Version 2.7.0 (October 2, 2020)
 
 This is a tiny library with powerful daily tools for krpano developer. It helps save time and produce more legible code.
 
@@ -14,8 +14,10 @@ Place it in your project folder and include in usual way.
 - **`asynccall`** shortcut (in addition to **`callwhen`**);
 - **`reliable_width`** and **`reliable_height`** styles to asynchronously obtain and handle textfield dimensions when they are rendered. The arbitary(unset) textfield dimensions are not available at the moment when textfield is created. That's why code needs to wait until sizes are defined by krpano engine; 
 - **`new`**, **`newhotspot`**, **`newlayer`** and **`newplugin`** – calls to support object-oriented style of code. They make code A LOT shorter and manage inheritance in a distinct way;
-- **`this`** – just a tag to make aliases.
-- **`get_this`** – action to copy object link to **`this`** 
+- **`this`** – just a tag to make aliases;
+- **`get_this`** – action to copy object link to **`this`** ;
+- **`array_push`** – action to add new item to array or create new array with specified name;
+- **`remove_array`** – action to remove all array items.
 
 ## More details
 
@@ -197,6 +199,19 @@ An example how `parent` alias can be used:
 		  	);
 		  "
 		/>
+
+### array_push, remove_array actions
+
+	array_push(new_array, 'item_name'); 
+	
+	is equal to:
+
+	set(new_array['item_name'].name, 'item_name');
+
+To remove array:
+
+	remove_array(new_array);
+
 
 ### Helpful snippets
 Snippets and autocompletions are kept [here](https://github.com/apushkarev/Krpano-Markup-Language)
