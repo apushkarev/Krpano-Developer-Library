@@ -1,7 +1,7 @@
 
 
 # KRPano Developer Library
-Version 2.7.0 (October 2, 2020)
+Version 2.7.0 (October 9, 2020)
 
 This is a tiny library with powerful daily tools for krpano developer. It helps save time and produce more legible code.
 
