@@ -200,7 +200,7 @@ An example how `parent` alias can be used:
 		  "
 		/>
 
-### array_push, remove_array actions
+### VII. array_push, remove_array actions
 
 	array_push(new_array, 'item_name'); 
 	
